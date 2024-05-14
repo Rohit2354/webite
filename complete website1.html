@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepal Online Shopping</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #131921;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            background-color: #232f3e;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        nav a:hover {
+            color: #ffd500;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        footer {
+            background-color: #131921;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Product Styles */
+        .product {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .product img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+        .product h3 {
+            margin: 10px 0;
+            font-size: 20px;
+            color: #333;
+        }
+        .product p {
+            margin: 0;
+            font-size: 18px;
+            color: #666;
+        }
+        .product button {
+            background-color: #ffd500;
+            border: none;
+            color: #000;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .product button:hover {
+            background-color: #e5c100;
+        }
+
+        /* Home Interface Styles */
+        .home-interface {
+            display: none;
+            padding: 50px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .home-interface h2 {
+            margin-bottom: 20px;
+            font-size: 36px;
+            color: #333;
+        }
+        .home-interface p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .search-container input[type=text] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .search-container button {
+            padding: 10px 20px;
+            background-color: #ffd500;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .search-container button:hover {
+            background-color: #e5c100;
+        }
+
+        /* Category Filter Styles */
+        .category-filter {
+            margin-top: 20px;
+        }
+        .category-filter button {
+            background-color: #232f3e;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .category-filter button:hover {
+            background-color: #131921;
+        }
+
+        /* Contact Interface Styles */
+        .contact-interface {
+            display: none;
+            padding: 50px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .contact-interface h2 {
+            margin-bottom: 20px;
+            font-size: 36px;
+            color: #333;
+        }
+        .contact-interface p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        /* Checkout Interface Styles */
+        .checkout-interface {
+            display: none;
+            padding: 50px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .checkout-interface h2 {
+            margin-bottom: 20px;
+            font-size: 36px;
+            color: #333;
+        }
+        .checkout-interface p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        .checkout-interface input[type=text] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .checkout-interface button {
+            background-color: #ffd500;
+            border: none;
+            color: #000;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .checkout-interface button:hover {
+            background-color: #e5c100;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Nepal Online Shopping</h1>
+    </header>
+    <nav>
+        <a href="#" id="homeLink">Home</a>
+        <a href="#" id="aboutLink">About</a>
+        <a href="#">Shop</a>
+        <a href="#" id="contactLink">Contact</a>
+    </nav>
+    <main id="mainContent">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search products...">
+            <button onclick="handleSearch()">Search</button>
+        </div>
+        <div class="category-filter">
+            <button data-category="all">All</button>
+            <button data-category="electronics">Electronics</button>
+            <button data-category="clothing">Clothing</button>
+            <button data-category="books">Books</button>
+        </div>
+        <!-- Product Listing -->
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/0000FF/808080?text=Laptop" alt="Laptop">
+            <h3>Laptop</h3>
+            <p>$500.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/FF0000/FFFFFF?text=Smartphone" alt="Smartphone">
+            <h3>Smartphone</h3>
+            <p>$300.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/00FF00/FFFFFF?text=Tablet" alt="Tablet">
+            <h3>Tablet</h3>
+            <p>$200.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/FF00FF/FFFFFF?text=Headphones" alt="Headphones">
+            <h3>Headphones</h3>
+            <p>$100.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/FFFF00/FFFFFF?text=T-Shirt" alt="T-Shirt">
+            <h3>T-Shirt</h3>
+            <p>$20.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/00FFFF/FFFFFF?text=Jeans" alt="Jeans">
+            <h3>Jeans</h3>
+            <p>$40.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="books">
+            <img src="https://via.placeholder.com/200x200/800080/FFFFFF?text=Book" alt="Book">
+            <h3>Book</h3>
+            <p>$15.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="books">
+            <img src="https://via.placeholder.com/200x200/008080/FFFFFF?text=Notebook" alt="Notebook">
+            <h3>Notebook</h3>
+            <p>$10.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/000000/FFFFFF?text=NewProduct" alt="New Product">
+            <h3>Redmi 13 pro</h3>
+            <p>$99.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/FF4500/FFFFFF?text=Redmi Phone" alt="Redmi Phone">
+            <h3>Redmi Phone</h3>
+            <p>$199.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/FF7F50/FFFFFF?text=Oppo Smartphone" alt="Oppo Smartphone">
+            <h3>Oppo Smartphone</h3>
+            <p>$299.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/FF6347/FFFFFF?text=Vivo Phone" alt="Vivo Phone">
+            <h3>Vivo Phone</h3>
+            <p>$249.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding more products -->
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/008080/FFFFFF?text=Samsung TV" alt="Samsung TV">
+            <h3>Samsung TV</h3>
+            <p>$799.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/800080/FFFFFF?text=LG Refrigerator" alt="LG Refrigerator">
+            <h3>LG Refrigerator</h3>
+            <p>$899.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/800080/FFFFFF?text=iPhone" alt="iPhone">
+            <h3>iPhone</h3>
+            <p>$699.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/4682B4/FFFFFF?text=Google Pixel" alt="Google Pixel">
+            <h3>Google Pixel</h3>
+            <p>$599.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding more products -->
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/4B0082/FFFFFF?text=Huawei Mate" alt="Huawei Mate">
+            <h3>Huawei Mate</h3>
+            <p>$499.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/2E8B57/FFFFFF?text=Xiaomi Mi" alt="Xiaomi Mi">
+            <h3>Xiaomi Mi</h3>
+            <p>$349.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/2E8B57/FFFFFF?text=Xiaomi Mi" alt="Xiaomi Mi">
+            <h3>Xiaomi Mi</h3>
+            <p>$349.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding more products -->
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/800000/FFFFFF?text=OnePlus" alt="OnePlus">
+            <h3>OnePlus</h3>
+            <p>$799.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/0000CD/FFFFFF?text=Sony Xperia" alt="Sony Xperia">
+            <h3>Sony Xperia</h3>
+            <p>$599.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/00FFFF/FFFFFF?text=Motorola Moto" alt="Motorola Moto">
+            <h3>Motorola Moto</h3>
+            <p>$399.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/808000/FFFFFF?text=HTC" alt="HTC">
+            <h3>HTC</h3>
+            <p>$299.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="electronics">
+            <img src="https://via.placeholder.com/200x200/800000/FFFFFF?text=BlackBerry" alt="BlackBerry">
+            <h3>BlackBerry</h3>
+            <p>$199.00</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/98FB98/FFFFFF?text=Dress" alt="Dress">
+            <h3>Dress</h3>
+            <p>$59.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/FFD700/FFFFFF?text=Skirt" alt="Skirt">
+            <h3>Skirt</h3>
+            <p>$29.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/BC8F8F/FFFFFF?text=Sweater" alt="Sweater">
+            <h3>Sweater</h3>
+            <p>$49.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/4682B4/FFFFFF?text=Jacket" alt="Jacket">
+            <h3>Jacket</h3>
+            <p>$79.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding more clothing products -->
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/FF1493/FFFFFF?text=Blouse" alt="Blouse">
+            <h3>Blouse</h3>
+            <p>$29.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/8A2BE2/FFFFFF?text=Skirt" alt="Skirt">
+            <h3>Skirt</h3>
+            <p>$34.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/FF69B4/FFFFFF?text=Dress" alt="Dress">
+            <h3>Dress</h3>
+            <p>$59.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/00BFFF/FFFFFF?text=Shirt" alt="Shirt">
+            <h3>Shirt</h3>
+            <p>$24.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/800000/FFFFFF?text=Pants" alt="Pants">
+            <h3>Pants</h3>
+            <p>$39.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Add more clothing products -->
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/008080/FFFFFF?text=Blazer" alt="Blazer">
+            <h3>Blazer</h3>
+            <p>$69.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/800080/FFFFFF?text=Cardigan" alt="Cardigan">
+            <h3>Cardigan</h3>
+            <p>$49.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding more clothing products -->
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/0000CD/FFFFFF?text=Sweatshirt" alt="Sweatshirt">
+            <h3>Sweatshirt</h3>
+            <p>$29.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/FA8072/FFFFFF?text=Shorts" alt="Shorts">
+            <h3>Shorts</h3>
+            <p>$19.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding more clothing products -->
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/483D8B/FFFFFF?text=Hoodie" alt="Hoodie">
+            <h3>Hoodie</h3>
+            <p>$39.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/9370DB/FFFFFF?text=Leggings" alt="Leggings">
+            <h3>Leggings</h3>
+            <p>$24.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding more clothing products -->
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/20B2AA/FFFFFF?text=Jumpsuit" alt="Jumpsuit">
+            <h3>Jumpsuit</h3>
+            <p>$49.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/556B2F/FFFFFF?text=Vest" alt="Vest">
+            <h3>Vest</h3>
+            <p>$29.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding more clothing products -->
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/7B68EE/FFFFFF?text=Pullover" alt="Pullover">
+            <h3>Pullover</h3>
+            <p>$39.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/F08080/FFFFFF?text=Tank Top" alt="Tank Top">
+            <h3>Tank Top</h3>
+            <p>$14.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding more clothing products -->
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/6495ED/FFFFFF?text=Socks" alt="Socks">
+            <h3>Socks</h3>
+            <p>$9.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/00FA9A/FFFFFF?text=Sportswear" alt="Sportswear">
+            <h3>Sportswear</h3>
+            <p>$49.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding more clothing products -->
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/2E8B57/FFFFFF?text=Coat" alt="Coat">
+            <h3>Coat</h3>
+            <p>$99.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/FAEBD7/FFFFFF?text=Scarf" alt="Scarf">
+            <h3>Scarf</h3>
+            <p>$19.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding more clothing products -->
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/FA8072/FFFFFF?text=Swimsuit" alt="Swimsuit">
+            <h3>Swimsuit</h3>
+            <p>$29.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/FF4500/FFFFFF?text=Hat" alt="Hat">
+            <h3>Hat</h3>
+            <p>$19.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding more clothing products -->
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/191970/FFFFFF?text=Gloves" alt="Gloves">
+            <h3>Gloves</h3>
+            <p>$14.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/778899/FFFFFF?text=Beanie" alt="Beanie">
+            <h3>Beanie</h3>
+            <p>$12.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding more clothing products -->
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/008000/FFFFFF?text=Belt" alt="Belt">
+            <h3>Belt</h3>
+            <p>$19.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/BDB76B/FFFFFF?text=Tie" alt="Tie">
+            <h3>Tie</h3>
+            <p>$14.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding more clothing products -->
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/BC8F8F/FFFFFF?text=Pajamas" alt="Pajamas">
+            <h3>Pajamas</h3>
+            <p>$24.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/000080/FFFFFF?text=Lingerie" alt="Lingerie">
+            <h3>Lingerie</h3>
+            <p>$19.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding more clothing products -->
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/CD5C5C/FFFFFF?text=Sweatpants" alt="Sweatpants">
+            <h3>Sweatpants</h3>
+            <p>$29.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/4B0082/FFFFFF?text=Bandana" alt="Bandana">
+            <h3>Bandana</h3>
+            <p>$9.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding more clothing products -->
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/8B4513/FFFFFF?text=Sarong" alt="Sarong">
+            <h3>Sarong</h3>
+            <p>$19.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <div class="product" data-category="clothing">
+            <img src="https://via.placeholder.com/200x200/556B2F/FFFFFF?text=Flannel" alt="Flannel">
+            <h3>Flannel</h3>
+            <p>$39.99</p>
+            <button onclick="checkout()">Add to Cart</button>
+        </div>
+        <!-- Adding book products -->
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/4682B4/FFFFFF?text=The Great Gatsby" alt="The Great Gatsby">
+    <h3>The Great Gatsby</h3>
+    <p>$12.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/800000/FFFFFF?text=To Kill a Mockingbird" alt="To Kill a Mockingbird">
+    <h3>To Kill a Mockingbird</h3>
+    <p>$10.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/2E8B57/FFFFFF?text=1984" alt="1984">
+    <h3>1984</h3>
+    <p>$11.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/8A2BE2/FFFFFF?text=Brave New World" alt="Brave New World">
+    <h3>Brave New World</h3>
+    <p>$10.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/FF4500/FFFFFF?text=The Catcher in the Rye" alt="The Catcher in the Rye">
+    <h3>The Catcher in the Rye</h3>
+    <p>$9.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more book products -->
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/00BFFF/FFFFFF?text=To Kill a Mockingbird" alt="To Kill a Mockingbird">
+    <h3>To Kill a Mockingbird</h3>
+    <p>$10.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/FFD700/FFFFFF?text=Lord of the Flies" alt="Lord of the Flies">
+    <h3>Lord of the Flies</h3>
+    <p>$9.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/008000/FFFFFF?text=The Hobbit" alt="The Hobbit">
+    <h3>The Hobbit</h3>
+    <p>$11.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/800080/FFFFFF?text=Harry Potter and the Sorcerer's Stone" alt="Harry Potter and the Sorcerer's Stone">
+    <h3>Harry Potter and the Sorcerer's Stone</h3>
+    <p>$14.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/4682B4/FFFFFF?text=The Great Gatsby" alt="The Great Gatsby">
+    <h3>The Great Gatsby</h3>
+    <p>$12.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more book products -->
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/800000/FFFFFF?text=To Kill a Mockingbird" alt="To Kill a Mockingbird">
+    <h3>To Kill a Mockingbird</h3>
+    <p>$10.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/2E8B57/FFFFFF?text=1984" alt="1984">
+    <h3>1984</h3>
+    <p>$11.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/8A2BE2/FFFFFF?text=Brave New World" alt="Brave New World">
+    <h3>Brave New World</h3>
+    <p>$10.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/FF4500/FFFFFF?text=The Catcher in the Rye" alt="The Catcher in the Rye">
+    <h3>The Catcher in the Rye</h3>
+    <p>$9.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more book products -->
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/00BFFF/FFFFFF?text=To Kill a Mockingbird" alt="To Kill a Mockingbird">
+    <h3>To Kill a Mockingbird</h3>
+    <p>$10.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/FFD700/FFFFFF?text=Lord of the Flies" alt="Lord of the Flies">
+    <h3>Lord of the Flies</h3>
+    <p>$9.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/008000/FFFFFF?text=The Hobbit" alt="The Hobbit">
+    <h3>The Hobbit</h3>
+    <p>$11.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/800080/FFFFFF?text=Harry Potter and the Sorcerer's Stone" alt="Harry Potter and the Sorcerer's Stone">
+    <h3>Harry Potter and the Sorcerer's Stone</h3>
+    <p>$14.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more book products -->
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/4682B4/FFFFFF?text=The Great Gatsby" alt="The Great Gatsby">
+    <h3>The Great Gatsby</h3>
+    <p>$12.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/800000/FFFFFF?text=To Kill a Mockingbird" alt="To Kill a Mockingbird">
+    <h3>To Kill a Mockingbird</h3>
+    <p>$10.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/2E8B57/FFFFFF?text=1984" alt="1984">
+    <h3>1984</h3>
+    <p>$11.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/8A2BE2/FFFFFF?text=Brave New World" alt="Brave New World">
+    <h3>Brave New World</h3>
+    <p>$10.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more book products -->
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/FF4500/FFFFFF?text=The Catcher in the Rye" alt="The Catcher in the Rye">
+    <h3>The Catcher in the Rye</h3>
+    <p>$9.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/00BFFF/FFFFFF?text=To Kill a Mockingbird" alt="To Kill a Mockingbird">
+    <h3>To Kill a Mockingbird</h3>
+    <p>$10.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/FFD700/FFFFFF?text=Lord of the Flies" alt="Lord of the Flies">
+    <h3>Lord of the Flies</h3>
+    <p>$9.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/008000/FFFFFF?text=The Hobbit" alt="The Hobbit">
+    <h3>The Hobbit</h3>
+    <p>$11.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more book products -->
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/800080/FFFFFF?text=Harry Potter and the Sorcerer's Stone" alt="Harry Potter and the Sorcerer's Stone">
+    <h3>Harry Potter and the Sorcerer's Stone</h3>
+    <p>$14.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/4682B4/FFFFFF?text=The Great Gatsby" alt="The Great Gatsby">
+    <h3>The Great Gatsby</h3>
+    <p>$12.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/800000/FFFFFF?text=To Kill a Mockingbird" alt="To Kill a Mockingbird">
+    <h3>To Kill a Mockingbird</h3>
+    <p>$10.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/2E8B57/FFFFFF?text=1984" alt="1984">
+    <h3>1984</h3>
+    <p>$11.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/8A2BE2/FFFFFF?text=Brave New World" alt="Brave New World">
+    <h3>Brave New World</h3>
+    <p>$10.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/FF4500/FFFFFF?text=The Catcher in the Rye" alt="The Catcher in the Rye">
+    <h3>The Catcher in the Rye</h3>
+    <p>$9.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/00BFFF/FFFFFF?text=To Kill a Mockingbird" alt="To Kill a Mockingbird">
+    <h3>To Kill a Mockingbird</h3>
+    <p>$10.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/FFD700/FFFFFF?text=Lord of the Flies" alt="Lord of the Flies">
+    <h3>Lord of the Flies</h3>
+    <p>$9.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more book products -->
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/008000/FFFFFF?text=The Hobbit" alt="The Hobbit">
+    <h3>The Hobbit</h3>
+    <p>$11.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/800080/FFFFFF?text=Harry Potter and the Sorcerer's Stone" alt="Harry Potter and the Sorcerer's Stone">
+    <h3>Harry Potter and the Sorcerer's Stone</h3>
+    <p>$14.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more book products -->
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/4682B4/FFFFFF?text=The Great Gatsby" alt="The Great Gatsby">
+    <h3>The Great Gatsby</h3>
+    <p>$12.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/800000/FFFFFF?text=To Kill a Mockingbird" alt="To Kill a Mockingbird">
+    <h3>To Kill a Mockingbird</h3>
+    <p>$10.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/2E8B57/FFFFFF?text=1984" alt="1984">
+    <h3>1984</h3>
+    <p>$11.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/8A2BE2/FFFFFF?text=Brave New World" alt="Brave New World">
+    <h3>Brave New World</h3>
+    <p>$10.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more book products -->
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/FF4500/FFFFFF?text=The Catcher in the Rye" alt="The Catcher in the Rye">
+    <h3>The Catcher in the Rye</h3>
+    <p>$9.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/00BFFF/FFFFFF?text=To Kill a Mockingbird" alt="To Kill a Mockingbird">
+    <h3>To Kill a Mockingbird</h3>
+    <p>$10.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/FFD700/FFFFFF?text=Lord of the Flies" alt="Lord of the Flies">
+    <h3>Lord of the Flies</h3>
+    <p>$9.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more book products -->
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/008000/FFFFFF?text=The Hobbit" alt="The Hobbit">
+    <h3>The Hobbit</h3>
+    <p>$11.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x200/800080/FFFFFF?text=Harry Potter and the Sorcerer's Stone" alt="Harry Potter and the Sorcerer's Stone">
+    <h3>Harry Potter and the Sorcerer's Stone</h3>
+    <p>$14.99</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/008080/FFFFFF?text=Bluetooth Speaker" alt="Bluetooth Speaker">
+    <h3>Bluetooth Speaker</h3>
+    <p>$50.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/800080/FFFFFF?text=Smartwatch" alt="Smartwatch">
+    <h3>Smartwatch</h3>
+    <p>$100.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/000080/FFFFFF?text=Game Console" alt="Game Console">
+    <h3>Game Console</h3>
+    <p>$300.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFFF00/FFFFFF?text=Wireless Earbuds" alt="Wireless Earbuds">
+    <h3>Wireless Earbuds</h3>
+    <p>$80.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFA500/FFFFFF?text=Virtual Reality Headset" alt="Virtual Reality Headset">
+    <h3>Virtual Reality Headset</h3>
+    <p>$200.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFC0CB/FFFFFF?text=Hair Dryer" alt="Hair Dryer">
+    <h3>Hair Dryer</h3>
+    <p>$40.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/00FF00/FFFFFF?text=Portable Charger" alt="Portable Charger">
+    <h3>Portable Charger</h3>
+    <p>$30.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/0000FF/FFFFFF?text=External Hard Drive" alt="External Hard Drive">
+    <h3>External Hard Drive</h3>
+    <p>$70.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FF0000/FFFFFF?text=Smart Home Device" alt="Smart Home Device">
+    <h3>Smart Home Device</h3>
+    <p>$150.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFFF00/FFFFFF?text=Wireless Mouse" alt="Wireless Mouse">
+    <h3>Wireless Mouse</h3>
+    <p>$25.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFA500/FFFFFF?text=Graphic Tablet" alt="Graphic Tablet">
+    <h3>Graphic Tablet</h3>
+    <p>$120.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFC0CB/FFFFFF?text=Digital Camera" alt="Digital Camera">
+    <h3>Digital Camera</h3>
+    <p>$250.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/00FF00/FFFFFF?text=Fitness Tracker" alt="Fitness Tracker">
+    <h3>Fitness Tracker</h3>
+    <p>$90.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/0000FF/FFFFFF?text=Wireless Keyboard" alt="Wireless Keyboard">
+    <h3>Wireless Keyboard</h3>
+    <p>$35.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FF0000/FFFFFF?text=Power Bank" alt="Power Bank">
+    <h3>Power Bank</h3>
+    <p>$20.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFFF00/FFFFFF?text=Action Camera" alt="Action Camera">
+    <h3>Action Camera</h3>
+    <p>$180.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFA500/FFFFFF?text=Wireless Printer" alt="Wireless Printer">
+    <h3>Wireless Printer</h3>
+    <p>$300.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFC0CB/FFFFFF?text=Digital Watch" alt="Digital Watch">
+    <h3>Digital Watch</h3>
+    <p>$60.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/00FF00/FFFFFF?text=Wireless Router" alt="Wireless Router">
+    <h3>Wireless Router</h3>
+    <p>$80.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/0000FF/FFFFFF?text=External SSD" alt="External SSD">
+    <h3>External SSD</h3>
+    <p>$120.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FF0000/FFFFFF?text=USB Flash Drive" alt="USB Flash Drive">
+    <h3>USB Flash Drive</h3>
+    <p>$15.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFFF00/FFFFFF?text=Wireless Speaker" alt="Wireless Speaker">
+    <h3>Wireless Speaker</h3>
+    <p>$70.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFA500/FFFFFF?text=Compact Camera" alt="Compact Camera">
+    <h3>Compact Camera</h3>
+    <p>$150.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFC0CB/FFFFFF?text=Bluetooth Earphones" alt="Bluetooth Earphones">
+    <h3>Bluetooth Earphones</h3>
+    <p>$40.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/00FF00/FFFFFF?text=Wireless Gaming Mouse" alt="Wireless Gaming Mouse">
+    <h3>Wireless Gaming Mouse</h3>
+    <p>$55.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/0000FF/FFFFFF?text=Micro SD Card" alt="Micro SD Card">
+    <h3>Micro SD Card</h3>
+    <p>$25.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FF0000/FFFFFF?text=Bluetooth Keyboard" alt="Bluetooth Keyboard">
+    <h3>Bluetooth Keyboard</h3>
+    <p>$45.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFFF00/FFFFFF?text=Fitness Smartwatch" alt="Fitness Smartwatch">
+    <h3>Fitness Smartwatch</h3>
+    <p>$110.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFA500/FFFFFF?text=Wireless Gaming Headset" alt="Wireless Gaming Headset">
+    <h3>Wireless Gaming Headset</h3>
+    <p>$120.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFC0CB/FFFFFF?text=Smartphone Gimbal" alt="Smartphone Gimbal">
+    <h3>Smartphone Gimbal</h3>
+    <p>$90.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/00FF00/FFFFFF?text=Wireless Charging Pad" alt="Wireless Charging Pad">
+    <h3>Wireless Charging Pad</h3>
+    <p>$30.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/0000FF/FFFFFF?text=Bluetooth Mouse" alt="Bluetooth Mouse">
+    <h3>Bluetooth Mouse</h3>
+    <p>$20.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FF0000/FFFFFF?text=Wireless Webcam" alt="Wireless Webcam">
+    <h3>Wireless Webcam</h3>
+    <p>$60.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFFF00/FFFFFF?text=USB-C Hub" alt="USB-C Hub">
+    <h3>USB-C Hub</h3>
+    <p>$40.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFA500/FFFFFF?text=Wireless Presenter" alt="Wireless Presenter">
+    <h3>Wireless Presenter</h3>
+    <p>$25.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFC0CB/FFFFFF?text=USB Microphone" alt="USB Microphone">
+    <h3>USB Microphone</h3>
+    <p>$70.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/00FF00/FFFFFF?text=Wireless Access Point" alt="Wireless Access Point">
+    <h3>Wireless Access Point</h3>
+    <p>$85.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/0000FF/FFFFFF?text=Bluetooth Earbuds" alt="Bluetooth Earbuds">
+    <h3>Bluetooth Earbuds</h3>
+    <p>$50.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FF0000/FFFFFF?text=Wireless Gaming Keyboard" alt="Wireless Gaming Keyboard">
+    <h3>Wireless Gaming Keyboard</h3>
+    <p>$100.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFFF00/FFFFFF?text=Smartphone Tripod" alt="Smartphone Tripod">
+    <h3>Smartphone Tripod</h3>
+    <p>$15.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFA500/FFFFFF?text=Wireless Charging Stand" alt="Wireless Charging Stand">
+    <h3>Wireless Charging Stand</h3>
+    <p>$45.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFC0CB/FFFFFF?text=USB Flash Drive 128GB" alt="USB Flash Drive 128GB">
+    <h3>USB Flash Drive 128GB</h3>
+    <p>$30.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/00FF00/FFFFFF?text=Wireless Ergonomic Keyboard" alt="Wireless Ergonomic Keyboard">
+    <h3>Wireless Ergonomic Keyboard</h3>
+    <p>$60.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/0000FF/FFFFFF?text=Bluetooth Speaker Set" alt="Bluetooth Speaker Set">
+    <h3>Bluetooth Speaker Set</h3>
+    <p>$100.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FF0000/FFFFFF?text=Wireless Gaming Mousepad" alt="Wireless Gaming Mousepad">
+    <h3>Wireless Gaming Mousepad</h3>
+    <p>$40.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFFF00/FFFFFF?text=Bluetooth Car Kit" alt="Bluetooth Car Kit">
+    <h3>Bluetooth Car Kit</h3>
+    <p>$35.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFA500/FFFFFF?text=Wireless Presenter with Laser Pointer" alt="Wireless Presenter with Laser Pointer">
+    <h3>Wireless Presenter with Laser Pointer</h3>
+    <p>$25.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFC0CB/FFFFFF?text=Wireless Doorbell" alt="Wireless Doorbell">
+    <h3>Wireless Doorbell</h3>
+    <p>$30.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/00FF00/FFFFFF?text=Bluetooth Audio Receiver" alt="Bluetooth Audio Receiver">
+    <h3>Bluetooth Audio Receiver</h3>
+    <p>$20.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/0000FF/FFFFFF?text=Wireless Backup Camera" alt="Wireless Backup Camera">
+    <h3>Wireless Backup Camera</h3>
+    <p>$55.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FF0000/FFFFFF?text=Bluetooth Audio Transmitter" alt="Bluetooth Audio Transmitter">
+    <h3>Bluetooth Audio Transmitter</h3>
+    <p>$25.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+<!-- Adding more electronic products -->
+<div class="product" data-category="electronics">
+    <img src="https://via.placeholder.com/200x200/FFFF00/FFFFFF?text=Wireless Barcode Scanner" alt="Wireless Barcode Scanner">
+    <h3>Wireless Barcode Scanner</h3>
+    <p>$75.00</p>
+    <button onclick="checkout()">Add to Cart</button>
+</div>
+
+        <!-- Add more products below -->
+    </main>
+    <main class="home-interface" id="homeInterface">
+        <h2>Welcome to Nepal Online Shopping!</h2>
+        <p>This is where you can display additional information or features for your website.</p>
+    </main>
+    <main class="contact-interface" id="contactInterface">
+        <h2>Contact Information</h2>
+        <p>Phul Kumari Sah: +9779845612375</p>
+        <p>Rama Mandal: +9779832165470</p>
+        <p>Aparna Yadav: +9779874561230</p>
+        <p>Ritesh Sah: +9779887654321</p>
+    </main>
+    <main class="checkout-interface" id="checkoutInterface">
+        <h2>Checkout</h2>
+        <p>Please select a payment method:</p>
+        <button onclick="showCashOnDelivery()">Cash on Delivery</button>
+        <button onclick="showEsewaPayment()">Payment with Esewa</button>
+        <button onclick="showKhaltiPayment()">Payment with Khalti</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 Nepal Online Shopping. All rights reserved.</p>
+        <p>Brahampuri-01, Sarlahi, Nepal</p>
+    </footer>
+    <script>
+        var homeLink = document.getElementById('homeLink');
+        var aboutLink = document.getElementById('aboutLink');
+        var contactLink = document.getElementById('contactLink');
+        var mainContent = document.getElementById('mainContent');
+        var homeInterface = document.getElementById('homeInterface');
+        var contactInterface = document.getElementById('contactInterface');
+        var checkoutInterface = document.getElementById('checkoutInterface');
+
+        homeLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            mainContent.style.display = 'block';
+            homeInterface.style.display = 'none';
+            contactInterface.style.display = 'none';
+            checkoutInterface.style.display = 'none';
+        });
+
+        aboutLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            mainContent.style.display = 'none';
+            homeInterface.style.display = 'block';
+            contactInterface.style.display = 'none';
+            checkoutInterface.style.display = 'none';
+        });
+
+        contactLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            mainContent.style.display = 'none';
+            homeInterface.style.display = 'none';
+            contactInterface.style.display = 'block';
+            checkoutInterface.style.display = 'none';
+        });
+
+        // Category Filtering
+        document.querySelectorAll('.category-filter button').forEach(function(button) {
+            button.addEventListener('click', function() {
+                var category = this.getAttribute('data-category');
+                if (category === 'all') {
+                    document.querySelectorAll('.product').forEach(function(product) {
+                        product.style.display = 'inline-block';
+                    });
+                } else {
+                    document.querySelectorAll('.product').forEach(function(product) {
+                        if (product.getAttribute('data-category') === category) {
+                            product.style.display = 'inline-block';
+                        } else {
+                            product.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        });
+
+        // Function to handle search functionality
+        function handleSearch() {
+            var searchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
+            var products = document.querySelectorAll('.product');
+
+            products.forEach(function(product) {
+                var productName = product.querySelector('h3').innerText.toLowerCase();
+                if (productName.includes(searchQuery)) {
+                    product.style.display = 'inline-block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        // Add event listener for search input
+        document.getElementById('searchInput').addEventListener('input', function() {
+            handleSearch();
+        });
+
+        // Function to handle checkout process
+        function checkout() {
+            mainContent.style.display = 'none';
+            homeInterface.style.display = 'none';
+            contactInterface.style.display = 'none';
+            checkoutInterface.style.display = 'block';
+        }
+
+        // Function to show Cash on Delivery success message
+        function showCashOnDelivery() {
+            alert('Cash on Delivery successful!');
+        }
+
+        // Function to show Esewa payment interface
+        function showEsewaPayment() {
+            checkoutInterface.innerHTML = `
+                <h2>Esewa Payment</h2>
+                <input type="text" placeholder="Enter Esewa ID"><br>
+                <input type="text" placeholder="Enter Amount"><br>
+                <button onclick="showEsewaSuccess()">Pay with Esewa</button>
+            `;
+        }
+
+        // Function to show Esewa success message
+        function showEsewaSuccess() {
+            alert('Esewa payment successful!');
+        }
+
+        // Function to show Khalti payment interface
+        function showKhaltiPayment() {
+            checkoutInterface.innerHTML = `
+                <h2>Khalti Payment</h2>
+                <input type="text" placeholder="Enter Khalti ID"><br>
+                <input type="text" placeholder="Enter Amount"><br>
+                <button onclick="showKhaltiSuccess()">Pay with Khalti</button>
+            `;
+        }
+
+        // Function to show Khalti success message
+        function showKhaltiSuccess() {
+            alert('Khalti payment successful!');
+        }
+    </script>
+</body>
+</html>
